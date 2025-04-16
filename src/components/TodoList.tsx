@@ -1,6 +1,8 @@
 import { Dispatch, SetStateAction } from 'react';
 import { Todo } from '../App';
 import TodoItem from './TodoItem';
+import { TodoBox } from '../styled-component/Styled';
+// import { CompleteBox, FilterButton, TodoBox,  } from '../styled-component/Styled';
 
 interface Props {
   todos: Todo[];
@@ -46,14 +48,14 @@ export default function TodoList({
     });
 
   return (
-    <div className="todo_box">
+    <TodoBox className="todo_box">
       <button className="arryabutton" onClick={toggleSortOrder}>
         {sortOrder === 'latest' ? '최신순' : '과거순'}
       </button>
       {['all', 'completed', 'incomplete'].map((f) => (
         <button
           key={f}
-          className={`arryabuttons ${filter === f ? 'active' : ''}`}
+          className={`arraybuttons ${filter === f ? 'active' : ''}`}
           onClick={() => setFilter(f as typeof filter)}
         >
           {f === 'all' ? '전체' : f === 'completed' ? '완료' : '미완료'}
@@ -73,6 +75,6 @@ export default function TodoList({
           />
         ))}
       </ul>
-    </div>
+    </TodoBox>
   );
 }

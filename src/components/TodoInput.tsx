@@ -1,5 +1,7 @@
 import { Dispatch, SetStateAction, RefObject } from 'react';
 import { Todo } from '../App';
+import { AddBtn, InputBox } from '../styled-component/Styled';
+
 
 interface Props {
   inputRef: RefObject<HTMLInputElement|null>;
@@ -27,7 +29,7 @@ export default function TodoInput({ inputRef, newTodo, setNewTodo, setTodos }: P
 
   return (
     <div>
-      <input
+      <InputBox
         ref={inputRef}
         className='input_box'
         type="text"
@@ -37,8 +39,9 @@ export default function TodoInput({ inputRef, newTodo, setNewTodo, setTodos }: P
         onKeyUp={(e) => {
           if (e.key === 'Enter') handleAddTodo();
         }}
-      />
-      <button onClick={handleAddTodo} className='add_btn'>추가</button>
+      >
+      </InputBox>
+      <AddBtn onClick={handleAddTodo} className='add_btn'>추가</AddBtn>
     </div>
   );
 }

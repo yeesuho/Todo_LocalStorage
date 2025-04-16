@@ -1,5 +1,7 @@
 import { Todo } from '../App';
 import { Dispatch, SetStateAction } from 'react';
+import { CompleteBox, PriorityButton, PriorityDisplay, TextBox } from '../styled-component/Styled';
+// import {  }
 
 interface Props {
   todo: Todo;
@@ -52,7 +54,7 @@ export default function TodoItem({
 
   return (
     <li>
-      <div className='text_box'>
+      <TextBox className='text_box'>
         {editingId === todo.id ? (
           <input
             className='input_box'
@@ -81,16 +83,16 @@ export default function TodoItem({
           </span>
         )}
         <button onClick={handleDelete}>삭제</button>
-        <input
+        <CompleteBox
           className='complete_box'
           type="checkbox"
           checked={todo.completed}
           onChange={toggleCompleted}
         />
-        <button className='priority_button priority_button_right' onClick={() => handlePriority(1)}>+</button>
-        <button className='priority_button' onClick={() => handlePriority(-1)}>-</button>
-        <span className='priority_display'>우선순위: {todo.priority}</span>
-      </div>
+        <PriorityButton className='priority_button priority_button_right' onClick={() => handlePriority(1)}>+</PriorityButton>
+        <PriorityButton className='priority_button' onClick={() => handlePriority(-1)}>-</PriorityButton>
+        <PriorityDisplay className='priority_display'>우선순위: {todo.priority}</PriorityDisplay>
+      </TextBox>
     </li>
   );
 }

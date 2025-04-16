@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
-import './App.css';
-import { GlobalStyle } from './components/GlobalStyle';
+// import './App.css';
+import { GlobalStyle } from './styled-component/GlobalStyle';
+import { H } from './styled-component/Styled'
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
 import ToggleButton from './components/ToggleButton';
 import { useTheme } from './custom_hooks/useTheme';
-import { useTodos } from './custom_hooks/useTodos';
+import { useTodos } from  './custom_hooks/useTodos'
+
 // Todo 타입
 export interface Todo {
   id: number;
@@ -18,12 +20,16 @@ export interface Todo {
 function App() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [newTodo, setNewTodo] = useState('');
-  const { todos, setTodos } = useTodos();
   const { isDarkMode, toggleTheme } = useTheme();
   const [filter, setFilter] = useState<'all' | 'completed' | 'incomplete'>('all');
   const [sortOrder, setSortOrder] = useState<'latest' | 'oldest'>('latest');
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editingText, setEditingText] = useState('');
+  const {todos, setTodos } = useTodos();
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
@@ -32,13 +38,16 @@ function App() {
   return (
     <div className={`App ${isDarkMode ? 'dark' : 'light'}`}>
       <GlobalStyle />
-      <h1>To Do List</h1>
-      <TodoInput
+      
+      <H>To Do List</H>
+      
+      <TodoInput 
         inputRef={inputRef}
         newTodo={newTodo}
         setNewTodo={setNewTodo}
         setTodos={setTodos}
       />
+      
       <TodoList
         todos={todos}
         setTodos={setTodos}
