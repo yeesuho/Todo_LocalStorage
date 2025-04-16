@@ -6,7 +6,10 @@
 [components](./src/components/)파일에 컴포넌트들을 분리해두었습니다
 
 [GlobalStyle.ts](./src/components/GlobalStyle.ts)<br>
-: styled-components를 사용해서 전역으로 폰트 스타일 적용
+: styled-components를 이용해서 전역으로 사용할 스타일 및 폰트 적용
+
+[Styled.ts](./src/styled-component/Styled.ts)<br>
+: 재사용 가능한 css를 styled-component로 리팩토링
 
 [TodoInput.tsx](./src/components/TodoInput.tsx)<br>
 : Input박스와 추가 버튼이 있는 컴포넌트<br>
