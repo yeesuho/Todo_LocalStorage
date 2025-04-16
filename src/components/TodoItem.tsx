@@ -1,6 +1,6 @@
 import { Todo } from '../App';
 import { Dispatch, SetStateAction } from 'react';
-import { CompleteBox, PriorityButton, PriorityDisplay, TextBox } from '../styled-component/Styled';
+import { CompleteBox, InputBox, PriorityButton, PriorityDisplay, TextBox } from '../styled-component/Styled';
 // import {  }
 
 interface Props {
@@ -56,7 +56,7 @@ export default function TodoItem({
     <li>
       <TextBox className='text_box'>
         {editingId === todo.id ? (
-          <input
+          <InputBox
             className='input_box'
             value={editingText}
             onChange={(e) => setEditingText(e.target.value)}

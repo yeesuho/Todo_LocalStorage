@@ -31,9 +31,6 @@ function App() {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
-  useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos));
-  }, [todos]);
 
   return (
     <div className={`App ${isDarkMode ? 'dark' : 'light'}`}>
